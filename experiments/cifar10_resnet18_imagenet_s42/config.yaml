@@ -1,0 +1,149 @@
+experiment:
+  name: cifar10_resnet18_imagenet_s42
+  seed: 42
+  single_run: true
+  output_dir: experiments/cifar10_resnet18_imagenet_s42
+  overwrite_existing: false
+runtime:
+  device: cuda:0
+  require_cuda: true
+  amp_enabled: true
+  amp_dtype: float16
+  grad_scaler: true
+  num_workers: 0
+  pin_memory: true
+  persistent_workers: false
+  cpu_threads: 8
+  cudnn_benchmark: false
+  cudnn_deterministic: true
+  deterministic_algorithms: warn_only
+  torch_compile: false
+  smoke_test_micro_batches: 200
+  reset_after_smoke_test: true
+paths:
+  data_root: data
+  split_indices: data/cifar10_split_seed42.json
+  torch_cache: tools/torch-cache
+  matplotlib_cache: tools/matplotlib-cache
+dataset:
+  name: CIFAR10
+  download: true
+  num_classes: 10
+  official_train_size: 50000
+  train_size: 45000
+  val_size: 5000
+  test_size: 10000
+  stratified_split: true
+  train_per_class: 4500
+  val_per_class: 500
+  split_seed: 42
+  class_names:
+  - airplane
+  - automobile
+  - bird
+  - cat
+  - deer
+  - dog
+  - frog
+  - horse
+  - ship
+  - truck
+transforms:
+  input_size: 96
+  train_random_crop_size: 32
+  train_random_crop_padding: 4
+  train_horizontal_flip_probability: 0.5
+  resize_interpolation: bilinear
+  resize_antialias: true
+  mean:
+  - 0.485
+  - 0.456
+  - 0.406
+  std:
+  - 0.229
+  - 0.224
+  - 0.225
+  mixup: false
+  cutmix: false
+  test_time_augmentation: false
+model:
+  name: torchvision_resnet18
+  weights: IMAGENET1K_V1
+  num_classes: 10
+  replace_fc: true
+  cifar_stem: false
+  fine_tune_backbone_from_epoch: 1
+  freeze_batchnorm_running_stats: true
+  train_batchnorm_affine: true
+  bn_eval_after_each_model_train: true
+training:
+  epochs: 30
+  batch_size: 4
+  max_physical_batch_size: 4
+  gradient_accumulation_steps: 8
+  effective_batch_size: 32
+  shuffle_train: true
+  drop_last: false
+  accumulation_remainder: normalize_by_actual_samples
+  gradient_clip_max_norm: 1.0
+  early_stopping: false
+  validate_every_epochs: 1
+  automatic_model_switch: false
+loss:
+  name: CrossEntropyLoss
+  label_smoothing: 0.1
+  reduction: mean
+  eval_label_smoothing: 0.0
+optimizer:
+  name: AdamW
+  backbone_lr: 0.0001
+  classifier_lr: 0.001
+  betas:
+  - 0.9
+  - 0.999
+  eps: 1.0e-08
+  weight_decay: 0.0005
+  no_decay_for_bias_and_norm: true
+scheduler:
+  name: linear_warmup_then_cosine
+  step_unit: successful_optimizer_update
+  warmup_epochs: 2
+  warmup_start_factor: 0.1
+  min_lr_ratio: 0.01
+  expected_updates_per_epoch: 1407
+  expected_total_updates: 42210
+  expected_warmup_updates: 2814
+checkpoint:
+  best_name: best.pth
+  last_name: last.pth
+  monitor: val_accuracy
+  mode: max
+  tie_breaker: lower_val_loss_then_earlier_epoch
+  save_last_every_epochs: 1
+  save_optimizer_scheduler_scaler_rng: true
+  resume_only_from_epoch_boundary: true
+evaluation:
+  batch_size: 4
+  shuffle: false
+  use_best_checkpoint: true
+  test_once_after_training: true
+  metrics:
+  - accuracy
+  - macro_precision
+  - macro_recall
+  - macro_f1
+  - per_class_accuracy
+  - loss
+  confusion_matrix: true
+  save_per_sample_predictions: true
+logging:
+  console_every_micro_batches: 200
+  epoch_metrics_file: metrics.csv
+  result_file: results.json
+  plot_files:
+  - training_curves.png
+  - confusion_matrix.png
+  record_epoch_seconds: true
+  record_peak_cuda_memory: true
+  copy_resolved_config: true
+  record_environment: true

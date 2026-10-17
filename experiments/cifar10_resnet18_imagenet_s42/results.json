@@ -1,0 +1,416 @@
+{
+  "experiment": "cifar10_resnet18_imagenet_s42",
+  "seed": 42,
+  "best_epoch": 28,
+  "best_val_accuracy": 0.9592,
+  "pretraining": "ImageNet-1K / ResNet18 IMAGENET1K_V1",
+  "test_size": 10000,
+  "split_sha256": "a2d9fe90df52f0dcbca7e948267e9221e3d30b98d72507147445bba7e940748e",
+  "classes": [
+    "airplane",
+    "automobile",
+    "bird",
+    "cat",
+    "deer",
+    "dog",
+    "frog",
+    "horse",
+    "ship",
+    "truck"
+  ],
+  "metrics": {
+    "accuracy": 0.953,
+    "loss": 0.24890016772449017,
+    "macro_precision": 0.9530584167821743,
+    "macro_recall": 0.953,
+    "macro_f1": 0.9529539244858549,
+    "per_class": [
+      {
+        "class_name": "airplane",
+        "accuracy": 0.97,
+        "precision": 0.958498023715415,
+        "recall": 0.97,
+        "f1": 0.9642147117296223,
+        "support": 1000
+      },
+      {
+        "class_name": "automobile",
+        "accuracy": 0.977,
+        "precision": 0.9731075697211156,
+        "recall": 0.977,
+        "f1": 0.9750499001996007,
+        "support": 1000
+      },
+      {
+        "class_name": "bird",
+        "accuracy": 0.949,
+        "precision": 0.9566532258064516,
+        "recall": 0.949,
+        "f1": 0.9528112449799196,
+        "support": 1000
+      },
+      {
+        "class_name": "cat",
+        "accuracy": 0.872,
+        "precision": 0.9036269430051813,
+        "recall": 0.872,
+        "f1": 0.887531806615776,
+        "support": 1000
+      },
+      {
+        "class_name": "deer",
+        "accuracy": 0.961,
+        "precision": 0.9533730158730159,
+        "recall": 0.961,
+        "f1": 0.9571713147410358,
+        "support": 1000
+      },
+      {
+        "class_name": "dog",
+        "accuracy": 0.924,
+        "precision": 0.8962172647914646,
+        "recall": 0.924,
+        "f1": 0.9098966026587887,
+        "support": 1000
+      },
+      {
+        "class_name": "frog",
+        "accuracy": 0.974,
+        "precision": 0.973026973026973,
+        "recall": 0.974,
+        "f1": 0.9735132433783108,
+        "support": 1000
+      },
+      {
+        "class_name": "horse",
+        "accuracy": 0.96,
+        "precision": 0.9856262833675564,
+        "recall": 0.96,
+        "f1": 0.972644376899696,
+        "support": 1000
+      },
+      {
+        "class_name": "ship",
+        "accuracy": 0.972,
+        "precision": 0.9642857142857143,
+        "recall": 0.972,
+        "f1": 0.9681274900398406,
+        "support": 1000
+      },
+      {
+        "class_name": "truck",
+        "accuracy": 0.971,
+        "precision": 0.9661691542288557,
+        "recall": 0.971,
+        "f1": 0.96857855361596,
+        "support": 1000
+      }
+    ],
+    "confusion_matrix": [
+      [
+        970,
+        2,
+        2,
+        1,
+        0,
+        0,
+        2,
+        0,
+        18,
+        5
+      ],
+      [
+        2,
+        977,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        3,
+        18
+      ],
+      [
+        7,
+        0,
+        949,
+        8,
+        14,
+        11,
+        8,
+        0,
+        3,
+        0
+      ],
+      [
+        3,
+        1,
+        13,
+        872,
+        12,
+        75,
+        11,
+        7,
+        4,
+        2
+      ],
+      [
+        2,
+        0,
+        9,
+        14,
+        961,
+        6,
+        4,
+        3,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        7,
+        55,
+        6,
+        924,
+        2,
+        4,
+        0,
+        1
+      ],
+      [
+        3,
+        0,
+        7,
+        10,
+        4,
+        0,
+        974,
+        0,
+        0,
+        2
+      ],
+      [
+        6,
+        1,
+        3,
+        4,
+        11,
+        14,
+        0,
+        960,
+        0,
+        1
+      ],
+      [
+        15,
+        4,
+        2,
+        1,
+        0,
+        1,
+        0,
+        0,
+        972,
+        5
+      ],
+      [
+        3,
+        19,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        7,
+        971
+      ]
+    ]
+  },
+  "config": {
+    "experiment": {
+      "name": "cifar10_resnet18_imagenet_s42",
+      "seed": 42,
+      "single_run": true,
+      "output_dir": "experiments/cifar10_resnet18_imagenet_s42",
+      "overwrite_existing": false
+    },
+    "runtime": {
+      "device": "cuda:0",
+      "require_cuda": true,
+      "amp_enabled": true,
+      "amp_dtype": "float16",
+      "grad_scaler": true,
+      "num_workers": 0,
+      "pin_memory": true,
+      "persistent_workers": false,
+      "cpu_threads": 8,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": true,
+      "deterministic_algorithms": "warn_only",
+      "torch_compile": false,
+      "smoke_test_micro_batches": 200,
+      "reset_after_smoke_test": true
+    },
+    "paths": {
+      "data_root": "data",
+      "split_indices": "data/cifar10_split_seed42.json",
+      "torch_cache": "tools/torch-cache",
+      "matplotlib_cache": "tools/matplotlib-cache"
+    },
+    "dataset": {
+      "name": "CIFAR10",
+      "download": true,
+      "num_classes": 10,
+      "official_train_size": 50000,
+      "train_size": 45000,
+      "val_size": 5000,
+      "test_size": 10000,
+      "stratified_split": true,
+      "train_per_class": 4500,
+      "val_per_class": 500,
+      "split_seed": 42,
+      "class_names": [
+        "airplane",
+        "automobile",
+        "bird",
+        "cat",
+        "deer",
+        "dog",
+        "frog",
+        "horse",
+        "ship",
+        "truck"
+      ]
+    },
+    "transforms": {
+      "input_size": 96,
+      "train_random_crop_size": 32,
+      "train_random_crop_padding": 4,
+      "train_horizontal_flip_probability": 0.5,
+      "resize_interpolation": "bilinear",
+      "resize_antialias": true,
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "mixup": false,
+      "cutmix": false,
+      "test_time_augmentation": false
+    },
+    "model": {
+      "name": "torchvision_resnet18",
+      "weights": "IMAGENET1K_V1",
+      "num_classes": 10,
+      "replace_fc": true,
+      "cifar_stem": false,
+      "fine_tune_backbone_from_epoch": 1,
+      "freeze_batchnorm_running_stats": true,
+      "train_batchnorm_affine": true,
+      "bn_eval_after_each_model_train": true
+    },
+    "training": {
+      "epochs": 30,
+      "batch_size": 4,
+      "max_physical_batch_size": 4,
+      "gradient_accumulation_steps": 8,
+      "effective_batch_size": 32,
+      "shuffle_train": true,
+      "drop_last": false,
+      "accumulation_remainder": "normalize_by_actual_samples",
+      "gradient_clip_max_norm": 1.0,
+      "early_stopping": false,
+      "validate_every_epochs": 1,
+      "automatic_model_switch": false
+    },
+    "loss": {
+      "name": "CrossEntropyLoss",
+      "label_smoothing": 0.1,
+      "reduction": "mean",
+      "eval_label_smoothing": 0.0
+    },
+    "optimizer": {
+      "name": "AdamW",
+      "backbone_lr": 0.0001,
+      "classifier_lr": 0.001,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "weight_decay": 0.0005,
+      "no_decay_for_bias_and_norm": true
+    },
+    "scheduler": {
+      "name": "linear_warmup_then_cosine",
+      "step_unit": "successful_optimizer_update",
+      "warmup_epochs": 2,
+      "warmup_start_factor": 0.1,
+      "min_lr_ratio": 0.01,
+      "expected_updates_per_epoch": 1407,
+      "expected_total_updates": 42210,
+      "expected_warmup_updates": 2814
+    },
+    "checkpoint": {
+      "best_name": "best.pth",
+      "last_name": "last.pth",
+      "monitor": "val_accuracy",
+      "mode": "max",
+      "tie_breaker": "lower_val_loss_then_earlier_epoch",
+      "save_last_every_epochs": 1,
+      "save_optimizer_scheduler_scaler_rng": true,
+      "resume_only_from_epoch_boundary": true
+    },
+    "evaluation": {
+      "batch_size": 4,
+      "shuffle": false,
+      "use_best_checkpoint": true,
+      "test_once_after_training": true,
+      "metrics": [
+        "accuracy",
+        "macro_precision",
+        "macro_recall",
+        "macro_f1",
+        "per_class_accuracy",
+        "loss"
+      ],
+      "confusion_matrix": true,
+      "save_per_sample_predictions": true
+    },
+    "logging": {
+      "console_every_micro_batches": 200,
+      "epoch_metrics_file": "metrics.csv",
+      "result_file": "results.json",
+      "plot_files": [
+        "training_curves.png",
+        "confusion_matrix.png"
+      ],
+      "record_epoch_seconds": true,
+      "record_peak_cuda_memory": true,
+      "copy_resolved_config": true,
+      "record_environment": true
+    }
+  },
+  "data_source": {
+    "source": "https://huggingface.co/datasets/uoft-cs/cifar10",
+    "reason": "Toronto server timeout; original train/test splits retained",
+    "train": {
+      "parquet_sha256": "8428b53a88a11ac374111006708df51469e315a22ac6d66470afd9c78d2ae883",
+      "npz_sha256": "2eb6de3cd9e9ec5e0d93ddf98683134b81f97a940a9637af4324cde9ef712911",
+      "samples": 50000
+    },
+    "test": {
+      "parquet_sha256": "841389e6f2d64f28bf17310e430aebac20ec3ba611a3c5e231dc93c645ce84de",
+      "npz_sha256": "6efab977757fb9cb2af38aaeb3fafe663731ba22b1fa2baf68a7e1569b70738a",
+      "samples": 10000
+    }
+  }
+}

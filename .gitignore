@@ -1,0 +1,19 @@
+# Dataset files; keep split and source metadata
+data/*
+!data/cifar10_split_seed42.json
+!data/data_source.json
+
+# Runtime caches
+tools/torch-cache/
+tools/matplotlib-cache/
+
+# Checkpoints and temporary files
+*.pth
+*.pt
+*.tmp
+*.zip
+__pycache__/
+*.py[cod]
+
+# Launcher logs
+experiments/console*.log

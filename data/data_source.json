@@ -1,0 +1,14 @@
+{
+  "source": "https://huggingface.co/datasets/uoft-cs/cifar10",
+  "reason": "Toronto server timeout; original train/test splits retained",
+  "train": {
+    "parquet_sha256": "8428b53a88a11ac374111006708df51469e315a22ac6d66470afd9c78d2ae883",
+    "npz_sha256": "2eb6de3cd9e9ec5e0d93ddf98683134b81f97a940a9637af4324cde9ef712911",
+    "samples": 50000
+  },
+  "test": {
+    "parquet_sha256": "841389e6f2d64f28bf17310e430aebac20ec3ba611a3c5e231dc93c645ce84de",
+    "npz_sha256": "6efab977757fb9cb2af38aaeb3fafe663731ba22b1fa2baf68a7e1569b70738a",
+    "samples": 10000
+  }
+}
